@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="top">
+    <button id="Click">RUN</button>
+    </div>
+    <div class="container">
+        <div class="left">
+            <label>HTML</label>
+            <textarea id="html-code" cols="30" rows="10" onkeyup="run()"></textarea>
+
+
+            <label>CSS</label>
+            <textarea id="css-code" cols="30" rows="10" onkeyup="run()" ></textarea>
+
+
+
+            <label>Javascript</label>
+            <textarea id="javascript-code" cols="30" rows="10" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <iframe id="output"></iframe>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/hint/show-hint.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/hint/html-hint.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/hint/show-hint.css">
+    
+    <script>
+        function run(){
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let JsCode = document.getElementById("javascript-code").value;
+            let Output = document.getElementById("output");
+            let Click = document.getElementById("Click");
+
+            Click.addEventListener("click", ()=>{
+            Output.contentDocument.body.innerHTML = htmlCode+"<style>"+cssCode +"</style>";
+
+            
+            Output.contentWindow.eval(JsCode);
+
+            })
+                 
+        }
+        
+    </script>
+</body>
+</html>
